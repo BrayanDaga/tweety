@@ -16,7 +16,7 @@ class Tweet extends Model
      */
     protected $fillable = [
         'body',
-        'author_id',
+        'user',
     ];
 
     /**
@@ -26,11 +26,11 @@ class Tweet extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'author_id' => 'integer',
+        'user' => 'integer',
     ];
 
 
-    public function author()
+    public function user()
     {
         return $this->belongsTo(\App\Models\User::class);
     }

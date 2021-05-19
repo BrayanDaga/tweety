@@ -18,7 +18,7 @@ class CreateTweetsTable extends Migration
         Schema::create('tweets', function (Blueprint $table) {
             $table->id();
             $table->string('body', 500);
-            $table->foreignId('author_id')->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('user')->constrained('users', 'user')->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });
 
