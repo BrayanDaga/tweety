@@ -16,7 +16,7 @@ class Tweet extends Model
      */
     protected $fillable = [
         'body',
-        'user',
+        'user_id',
     ];
 
     /**
@@ -26,7 +26,7 @@ class Tweet extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'user' => 'integer',
+        'user_id' => 'integer',
     ];
 
 
