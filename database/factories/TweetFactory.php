@@ -24,7 +24,7 @@ class TweetFactory extends Factory
     public function definition()
     {
         return [
-            'body' => $this->faker->regexify('[A-Za-z0-9]{500}'),
+            'body' => $this->faker->text(),
             'user_id' => User::factory(),
         ];
     }

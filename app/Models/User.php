@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Traits\Followable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -17,6 +18,7 @@ class User extends Authenticatable
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
+    use Followable;
 
     /**
      * The attributes that are mass assignable.
@@ -60,10 +62,16 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
+
+
     public function timeline()
     {
 
-        return Tweet::orderByDesc('id')
+        $friends = $this->follows()->pluck('id');
+
+        return Tweet::whereIn('user_id', $friends)
+            ->orWhere('user_id', $this->id)
+            ->orderByDesc('id')
             ->paginate(50);
     }
 
