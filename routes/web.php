@@ -45,7 +45,7 @@ Route::middleware('auth')->group(function () {
     //     'ProfilesController@update'
     // )->middleware('can:edit,user');
 
-    // Route::get('/explore', 'ExploreController');
+    Route::get('/explore', 'ExploreController');
 });
 
 // Route::get('/profiles/{user:username}', 'ProfilesController@show')->name(
