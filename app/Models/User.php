@@ -62,6 +62,10 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
+    public function tweets()
+    {
+        return $this->hasMany(Tweet::class)->latest();
+    }
 
 
     public function timeline()
@@ -73,6 +77,13 @@ class User extends Authenticatable
             ->orWhere('user_id', $this->id)
             ->orderByDesc('id')
             ->paginate(50);
+    }
+
+    public function path($append = '')
+    {
+        $path = route('profile', $this->username);
+
+        return $append ? "{$path}/{$append}" : $path;
     }
 
 }

@@ -48,6 +48,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/explore', 'ExploreController');
 });
 
-// Route::get('/profiles/{user:username}', 'ProfilesController@show')->name(
-//     'profile'
-// );
+Route::get('/profiles/{user:username}', 'ProfilesController@show')->name(
+    'profile'
+);

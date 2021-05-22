@@ -5,7 +5,7 @@
         @forelse (current_user()->follows as $user)
             <li class="{{ $loop->last ? '' : 'mb-4' }}">
                 <div>
-                    <a href="{{ $user->name }}" class="flex items-center text-sm">
+                    <a href="{{ $user->path() }}" class="flex items-center text-sm">
                         @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
                         <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition mr-2"
                         width="40"
