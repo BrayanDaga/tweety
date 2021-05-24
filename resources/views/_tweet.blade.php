@@ -23,7 +23,7 @@
         </p>
 
         @auth
-            {{-- <x-like-buttons :tweet="$tweet" /> --}}
+            <x-like-buttons :tweet="$tweet" />
         @endauth
     </div>
 </div>
