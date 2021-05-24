@@ -8,30 +8,20 @@ use App\Models\User;
 trait Likeable
 {
 
-    public function likes()
-    {
-        return $this->hasMany(Like::class);
-    }
-
     public function isLikedBy(User $user)
     {
-        return (bool) $user->likes->where('tweet_id', $this->id)->count();
+        return $this->likes()->where('user_id', $user->id)->exists();
+        // return (bool) $user->likes->where('tweet_id', $this->id)->count();
     }
 
-    public function isDislikedBy(User $user)
+
+
+    public function likesCount()
     {
-        return (bool) $user->likes
-            ->where('tweet_id', $this->id)
-            ->count();
+        return $this->likes()->count();
     }
 
-
-    public function dislike($user = null)
-    {
-        return $this->like($user, false);
-    }
-
-    public function like($user = null, $liked = true)
+    public function like($user = null)
     {
         $this->likes()->updateOrCreate(
             [
@@ -40,8 +30,10 @@ trait Likeable
         );
     }
 
-    public function likesCount()
+    public function unlike($user = null)
     {
-        return $this->likes()->count();
+        $this->likes()->where([
+            'user_id' => $user ? $user->id : auth()->id()
+        ])->delete();
     }
 }
