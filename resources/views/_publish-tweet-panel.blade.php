@@ -1,14 +1,14 @@
 <div class="border border-blue-400 rounded-lg px-8 py-6 mb-8">
-    <form method="POST" action="/tweets">
-        @csrf
+    <form wire:submit.prevent="store">
 
         <textarea
-            name="body"
             class="w-full"
             placeholder="What's up doc?"
             required
             autofocus
+            wire:model.lazy="body"
         ></textarea>
+
 
         <hr class="my-4">
 
