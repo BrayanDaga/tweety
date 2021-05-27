@@ -3,14 +3,7 @@
     @if ($tweet->isLikedBy(current_user()))
 
 
-
-    <form method="POST"
-          action="/tweets/{{ $tweet->id }}/like"
-    >
-        @csrf
-        @method('DELETE')
-
-
+    <form wire:submit.prevent="unlike({{$tweet->id}})">
 
             <button type="submit"
                     class="text-xs"
@@ -24,11 +17,8 @@
 
     @else
 
-    <form method="POST"
-    action="/tweets/{{ $tweet->id }}/like"
->
-  @csrf
-
+    <form wire:submit.prevent="like({{$tweet->id}})"
+        >
 
       <button type="submit"
               class="text-xs"

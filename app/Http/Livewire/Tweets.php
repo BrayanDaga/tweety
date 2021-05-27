@@ -8,26 +8,22 @@ use Livewire\Component;
 class Tweets extends Component
 {
 
-    public $body;
+    public Tweet $tweet;
 
     public function render()
     {
-        return view('livewire.tweets', [
-            'tweets' => current_user()->timeline()
-        ]);
+        return view('livewire.tweets');
     }
 
-    protected $rules = [
-        'body' => 'required|max:255|min:3'
-    ];
 
-    public function store()
+    public function like(Tweet $tweet)
     {
-        $this->validate();
-
-        Tweet::create([
-            'user_id' => auth()->id(),
-            'body' => $this->body,
-        ]);
+        $tweet->like(current_user());
     }
+
+    public function unlike(Tweet $tweet)
+    {
+        $tweet->unlike(current_user());
+    }
+
 }
