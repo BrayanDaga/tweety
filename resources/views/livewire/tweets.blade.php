@@ -1,4 +1,3 @@
-<div>
 <div class="flex p-4 border-b border-b-gray-400">
     <div class="mr-2 flex-shrink-0">
         <a href="{{ $tweet->user->path() }}">
@@ -29,4 +28,3 @@
     </div>
 </div>
 
-</div>

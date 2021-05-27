@@ -7,22 +7,7 @@ use Livewire\Component;
 
 class Timeline extends Component
 {
-    public $body;
-
-    protected $rules = [
-        'body' => 'required|max:255|min:3'
-    ];
-
-    public function store()
-    {
-        $this->validate();
-
-        Tweet::create([
-            'user_id' => auth()->id(),
-            'body' => $this->body,
-        ]);
-        $this->body = '';
-    }
+    protected $listeners = ['tweetAdded' => 'render '];
 
     public function render()
     {

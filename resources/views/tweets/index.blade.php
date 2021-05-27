@@ -1,6 +1,7 @@
 <x-app>
     <div>
         {{-- <livewire:tweets /> --}}
-        @livewire('timeline')
+        <livewire:panel>
+        <livewire:timeline>
     </div>
 </x-app>

@@ -24,11 +24,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 
 Route::middleware('auth')->group(function () {
-    Route::get('/tweets', 'TweetsController@index')->name('home');
-    Route::post('/tweets', 'TweetsController@store');
-
-    Route::post('/tweets/{tweet}/like', 'TweetLikesController@store');
-    Route::delete('/tweets/{tweet}/like', 'TweetLikesController@destroy');
+    Route::view('/tweets', 'tweets.index')->name('home');
 
     Route::post(
         '/profiles/{user:username}/follow',
