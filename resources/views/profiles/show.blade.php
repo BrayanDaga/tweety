@@ -43,7 +43,9 @@
 
     </header>
 
-    @include ('_timeline', [
+    {{-- @include ('_timeline', [
         'tweets' => $tweets
-    ])
+    ]) --}}
+    @livewire('timeline', ['view' => 'profile', 'user' => $user] )
+
 </x-app>

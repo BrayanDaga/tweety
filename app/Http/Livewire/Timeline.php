@@ -2,17 +2,34 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\User;
 use App\Models\Tweet;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Timeline extends Component
 {
-    protected $listeners = ['tweetAdded' => 'render '];
+    use WithPagination;
+
+    protected $listeners = ['tweetAdded' => 'store'];
+
+    public $view;
+    public User $user;
 
     public function render()
     {
-        return view('livewire.timeline', [
-            'tweets' => current_user()->timeline()
-        ]);
+
+        if ($this->view == 'profile') {
+            return view('livewire.timeline', [
+                'user' => $this->user,
+                'tweets' => $this->user
+                    ->tweets()
+                    ->paginate(50),
+            ]);
+        }else{
+            return view('livewire.timeline', [
+                'tweets' => current_user()->timeline()
+            ]);
+        }
     }
 }
