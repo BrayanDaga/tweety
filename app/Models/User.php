@@ -85,10 +85,7 @@ class User extends Authenticatable
             ->paginate(50);
     }
 
-    public function getAvatarAttribute($value)
-    {
-        return asset($value ?: '/images/default-avatar.jpeg');
-    }
+
 
     public function path($append = '')
     {

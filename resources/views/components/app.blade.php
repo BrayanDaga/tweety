@@ -12,7 +12,7 @@
 
                 @auth
                     <div class="lg:w-1/6">
-                        @include ('_friends-list')
+                        <livewire:friends>
                     </div>
                 @endauth
             </div>

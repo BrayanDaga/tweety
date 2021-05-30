@@ -6,7 +6,7 @@
                   class="mb-2"
             >
 
-            <img src="{{ $user->avatar }}"
+            <img src="{{ $user->profile_photo_url }}"
                  alt=""
                  class="rounded-full mr-2 absolute bottom-0 transform -translate-x-1/2 translate-y-1/2"
                  style="left: 50%"
@@ -22,14 +22,17 @@
 
             <div class="flex">
                 @can ('edit', $user)
+
+
+                    {{-- <a href="{{ route('profile.show') }}" --}}
                     <a href="{{ $user->path('edit') }}"
                        class="rounded-full border border-gray-300 py-2 px-4 text-black text-xs mr-2"
                     >
                         Edit Profile
                     </a>
                 @endcan
-
-                <x-follow-button :user="$user"></x-follow-button>
+                @livewire('follow', ['user' => $user])
+                {{-- <x-follow-button :user="$user"></x-follow-button> --}}
             </div>
         </div>
 

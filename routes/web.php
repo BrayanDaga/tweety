@@ -13,37 +13,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
 
 
+Route::redirect('/', 'tweets');
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::view('/tweets', 'tweets.index')->name('home');
-
-    Route::post(
-        '/profiles/{user:username}/follow',
-        'FollowsController@store'
-    )->name('follow');
-
     Route::get(
         '/profiles/{user:username}/edit',
         'ProfilesController@edit'
     )->middleware('can:edit,user');
 
-    Route::patch(
-        '/profiles/{user:username}',
-        'ProfilesController@update'
-    )->middleware('can:edit,user');
-
     Route::get('/explore', 'ExploreController');
+
+    Route::get('/profiles/{user:username}', 'ProfilesController@show')->name(
+        'profile'
+    );
 });
 
-Route::get('/profiles/{user:username}', 'ProfilesController@show')->name(
-    'profile'
-);
+
