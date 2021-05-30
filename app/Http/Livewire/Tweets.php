@@ -16,14 +16,14 @@ class Tweets extends Component
     }
 
 
-    public function like(Tweet $tweet)
+    public function like()
     {
-        $tweet->like(current_user());
+        $this->tweet->like(current_user());
     }
 
-    public function unlike(Tweet $tweet)
+    public function unlike()
     {
-        $tweet->unlike(current_user());
+        $this->tweet->unlike(current_user());
     }
 
 }

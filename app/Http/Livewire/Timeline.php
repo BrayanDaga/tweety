@@ -11,7 +11,7 @@ class Timeline extends Component
 {
     use WithPagination;
 
-    protected $listeners = ['tweetAdded' => 'store'];
+    protected $listeners = ['tweetAdded' => 'render'];
 
     public $view;
     public User $user;
