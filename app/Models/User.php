@@ -82,7 +82,7 @@ class User extends Authenticatable
             ->orWhere('user_id', $this->id)
             ->with('likes')
             ->orderByDesc('id')
-            ->paginate(50);
+            ->paginate();
     }
 
 

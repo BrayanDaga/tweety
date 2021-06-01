@@ -24,7 +24,7 @@ class Timeline extends Component
                 'user' => $this->user,
                 'tweets' => $this->user
                     ->tweets()
-                    ->paginate(50),
+                    ->paginate(),
             ]);
         }else{
             return view('livewire.timeline', [

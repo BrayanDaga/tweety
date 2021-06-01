@@ -24,7 +24,7 @@
         <section class="px-8 py-4 mb-6">
             <header class="container mx-auto">
                 <h1>
-                    <a href="/tweets">
+                    <a href="{{ route('home') }}">
                         <img
                             src="/images/logo.svg"
                             alt="Tweety"
@@ -37,6 +37,6 @@
         {{ $slot }}
     </div>
     @livewireScripts
-    {{-- <script src="http://unpkg.com/turbolinks"></script> --}}
+    <script src="https://cdn.jsdelivr.net/gh/livewire/turbolinks@v0.1.x/dist/livewire-turbolinks.js" data-turbolinks-eval="false" data-turbo-eval="false"></script>
 </body>
 </html>

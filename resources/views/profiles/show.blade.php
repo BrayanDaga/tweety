@@ -24,8 +24,7 @@
                 @can ('edit', $user)
 
 
-                    {{-- <a href="{{ route('profile.show') }}" --}}
-                    <a href="{{ $user->path('edit') }}"
+                    <a href="{{ route('profile.show') }}"
                        class="rounded-full border border-gray-300 py-2 px-4 text-black text-xs mr-2"
                     >
                         Edit Profile
