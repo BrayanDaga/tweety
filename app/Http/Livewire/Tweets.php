@@ -26,4 +26,9 @@ class Tweets extends Component
         $this->tweet->unlike(current_user());
     }
 
+    public function destroy()
+    {
+        $this->tweet->delete();
+        $this->emit('deleteTweet');
+    }
 }

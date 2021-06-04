@@ -25,7 +25,17 @@
         @auth
             <x-like-buttons :tweet="$tweet" />
         @endauth
+
+
     </div>
 
+    @can ('delete', $tweet)
+    <div class="flex-shrink-0 ml-5 mr-0">
+        <form wire:submit.prevent="destroy">
+            <button type="submit">X</button>
+
+        </form>
+    </div>
+    @endcan
 
 </div>
